@@ -97,11 +97,11 @@ public enum AccentColor: String, CaseIterable, Identifiable, Sendable {
     /// The custom colour's hex, kept separate so switching away from `.custom` and back keeps the choice.
     public static let customHexKey = "accent.customHex"
     /// Seeds the custom picker (mint) so a fresh `.custom` selection is not black.
-    public static let defaultCustomHex = "#149A78"
+    public static let defaultCustomHex = "#22C55E"
 
     public var label: String {
         switch self {
-        case .mint:      return String(localized: "Mint", bundle: .module)
+        case .mint:      return String(localized: "Pulse Green", bundle: .module)
         case .whoopBlue: return String(localized: "WHOOP Blue", bundle: .module)
         case .custom:    return String(localized: "Custom", bundle: .module)
         }
@@ -177,7 +177,7 @@ public enum ThemePreset: String, CaseIterable, Identifiable, Sendable {
 
     public var label: String {
         switch self {
-        case .mint:     return String(localized: "Mint", bundle: .module)
+        case .mint:     return String(localized: "Pulse", bundle: .module)
         case .ocean:    return String(localized: "Ocean", bundle: .module)
         case .classic:  return String(localized: "Classic", bundle: .module)
         case .midnight: return String(localized: "Midnight", bundle: .module)
@@ -198,7 +198,7 @@ public enum ThemePreset: String, CaseIterable, Identifiable, Sendable {
 
     public var recipe: Recipe? {
         switch self {
-        case .mint:     return Recipe(accent: .mint,      chart: .titanium, backdrop: true,  cardOpacity: 100)
+        case .mint:     return Recipe(accent: .mint,      chart: .titanium, backdrop: false, cardOpacity: 100)
         case .ocean:    return Recipe(accent: .whoopBlue, chart: .titanium, backdrop: true,  cardOpacity: 100)
         case .classic:  return Recipe(accent: .whoopBlue, chart: .classic,  backdrop: true,  cardOpacity: 100)
         case .midnight: return Recipe(accent: .mint,      chart: .titanium, backdrop: false, cardOpacity: 100)

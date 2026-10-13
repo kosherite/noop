@@ -8,31 +8,31 @@ import SwiftUI
 
 public enum NoopVisualStyle {
     // Neutral, low-chroma surfaces sampled from the supplied dark-mode reference.
-    public static let canvas = Color(light: "#F3F4F6", dark: "#1D1E23")
-    public static let surface = Color(light: "#FFFFFF", dark: "#2A2C34")
-    public static let surfaceTop = Color(light: "#FFFFFF", dark: "#30323B")
-    public static let surfaceBottom = Color(light: "#F4F5F7", dark: "#282A31")
-    public static let inset = Color(light: "#E8E9ED", dark: "#23252C")
+    public static let canvas = Color(light: "#FFFFFF", dark: "#111110")
+    public static let surface = Color(light: "#F6F5F2", dark: "#1B1A18")
+    public static let surfaceTop = Color(light: "#F6F5F2", dark: "#1B1A18")
+    public static let surfaceBottom = Color(light: "#F6F5F2", dark: "#1B1A18")
+    public static let inset = Color(light: "#EBE9E4", dark: "#2A2926")
 
-    public static let border = Color(light: "#D8DAE0", dark: "#373A44")
-    public static let borderHighlight = Color(light: "#FFFFFF", dark: "#4B4E59")
-    public static let divider = Color(light: "#E4E5E9", dark: "#383A43")
+    public static let border = Color(light: "#E6E3DD", dark: "#2C2B28")
+    public static let borderHighlight = Color(light: "#D3CFC6", dark: "#4A4844")
+    public static let divider = Color(light: "#E6E3DD", dark: "#2C2B28")
 
-    public static let primaryText = Color(light: "#17181C", dark: "#F7F7FA")
-    public static let secondaryText = Color(light: "#555861", dark: "#C3C4CA")
-    public static let tertiaryText = Color(light: "#7D808A", dark: "#7D7F88")
+    public static let primaryText = Color(light: "#1D1D1F", dark: "#F3F2EF")
+    public static let secondaryText = Color(light: "#8B877F", dark: "#9B978F")
+    public static let tertiaryText = Color(light: "#A9A59D", dark: "#6E6A63")
 
-    public static let mint = Color(light: "#149A78", dark: "#69DDB8")
-    public static let mintDeep = Color(light: "#0D765C", dark: "#13A982")
-    public static let mintGlow = Color(light: "#38C99E", dark: "#54E6BD")
+    public static let mint = Color(light: "#22C55E", dark: "#22C55E")
+    public static let mintDeep = Color(light: "#15803D", dark: "#4ADE80")
+    public static let mintGlow = Color(light: "#4ADE80", dark: "#4ADE80")
 
-    public static let cardRadius: CGFloat = 22
+    public static let cardRadius: CGFloat = 24
     public static let compactRadius: CGFloat = 16
     public static let pillRadius: CGFloat = 999
     public static let pagePadding: CGFloat = 16
-    public static let cardPadding: CGFloat = 16
+    public static let cardPadding: CGFloat = 20
     public static let itemGap: CGFloat = 12
-    public static let sectionGap: CGFloat = 26
+    public static let sectionGap: CGFloat = 24
 }
 
 /// Shared card/panel treatment: a solid surface on iOS, gradient and soft elevation elsewhere.
@@ -66,10 +66,6 @@ public struct NoopPanelSurface: View {
         // This changes decorative depth only; card geometry and the design-system colors stay the same.
         shape
             .fill(NoopVisualStyle.surface)
-            .overlay(shape.strokeBorder(
-                tint?.opacity(0.14) ?? NoopVisualStyle.borderHighlight.opacity(elevated ? 0.9 : 0.65),
-                lineWidth: 0.8
-            ))
             .opacity(surfaceOpacity)
         #else
         shape
