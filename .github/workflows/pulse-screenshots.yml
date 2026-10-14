@@ -1,0 +1,90 @@
+# Pulse: render the iOS app in the Simulator with the built-in demo data and save screenshots.
+# Manual only (Actions -> Pulse screenshots -> Run workflow). Uses the app's DEBUG harness:
+# `--demo-seed` fills a synthetic 120-day dataset, `--demo-screen <name>` opens one screen.
+name: Pulse screenshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      screens:
+        description: "Screens to capture (space separated)"
+        required: false
+        default: "liquidtoday today sleep trends health settings"
+
+permissions:
+  contents: read
+
+jobs:
+  shots:
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Pick an iPhone simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          d = json.load(sys.stdin)["devices"]
+          ios = [(rt, x) for rt, xs in d.items() if "iOS" in rt for x in xs if x["name"].startswith("iPhone")]
+          ios.sort(key=lambda p: p[0])
+          pref = [x for rt, x in ios if "Pro" in x["name"] and "Max" not in x["name"]] or [x for _, x in ios]
+          print(pref[-1]["udid"])')
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          xcrun simctl list devices | grep "$UDID"
+
+      - name: Build for the simulator (Debug)
+        run: >-
+          xcodebuild -scheme NOOPiOS -configuration Debug
+          -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}"
+          -derivedDataPath build/dd
+          CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+          build
+
+      - name: Boot, install, seed
+        run: |
+          U=${{ steps.sim.outputs.udid }}
+          xcrun simctl boot "$U" || true
+          xcrun simctl bootstatus "$U" -b
+          xcrun simctl status_bar "$U" override --time "9:41" --batteryState charged --batteryLevel 100 --wifiBars 3 --cellularBars 4 || true
+          APP=$(find build/dd/Build/Products/Debug-iphonesimulator -maxdepth 1 -name '*.app' -type d | head -1)
+          echo "APP=$APP" >> "$GITHUB_ENV"
+          xcrun simctl install "$U" "$APP"
+          BID=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$APP/Info.plist")
+          echo "BID=$BID" >> "$GITHUB_ENV"
+          xcrun simctl launch "$U" "$BID" --demo-seed --demo-screen liquidtoday
+          sleep 45
+          xcrun simctl terminate "$U" "$BID" || true
+
+      - name: Capture screens (light and dark)
+        run: |
+          U=${{ steps.sim.outputs.udid }}
+          mkdir -p shots
+          for mode in light dark; do
+            xcrun simctl ui "$U" appearance "$mode"
+            for s in ${{ inputs.screens }}; do
+              xcrun simctl launch "$U" "$BID" --demo-seed --demo-screen "$s" -theme.appearance "$mode"
+              sleep 12
+              xcrun simctl io "$U" screenshot "shots/${s}-${mode}.png"
+              xcrun simctl terminate "$U" "$BID" || true
+              sleep 2
+            done
+          done
+          # the full app shell (tab bar) once, light
+          xcrun simctl ui "$U" appearance light
+          xcrun simctl launch "$U" "$BID" --demo-seed -theme.appearance light
+          sleep 15
+          xcrun simctl io "$U" screenshot "shots/app-shell-light.png"
+          ls -la shots
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pulse-screenshots
+          path: shots/
