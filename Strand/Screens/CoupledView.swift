@@ -230,7 +230,7 @@ struct CoupledView: View {
                     .foregroundStyle(.white)
                     .shadow(color: .black.opacity(0.5), radius: 6, y: 1)
             }
-            Text("RECOVERY")
+            Text("Recovery")
                 .font(StrandFont.overline)
                 .tracking(StrandFont.overlineTracking)
                 .foregroundStyle(sampled)
@@ -270,7 +270,7 @@ struct CoupledView: View {
     /// Today hero pill chrome. Reuses TodayView's word + level colour so the read stays consistent.
     private func readinessPill(_ word: String) -> some View {
         let tint = readinessTint(readinessLevel)
-        return Text(word.uppercased())
+        return Text(word)
             .font(StrandFont.overline)
             .tracking(StrandFont.overlineTracking)
             .foregroundStyle(tint)
@@ -323,7 +323,7 @@ struct CoupledView: View {
                     // Right: the coupled stat stack, OPTIMAL range (with a liquid tube band), calories, workouts.
                     VStack(alignment: .leading, spacing: 14) {
                         optimalStat
-                        // heroStat renders `Text(title.uppercased())`, so `title` is a plain String and
+                        // heroStat renders `Text(title)`, so `title` is a plain String and
                         // a bare literal would NOT localize — pass the resolved localized value (the
                         // catalog already carries Calories/Workouts) so German shows KALORIEN, not CALORIES.
                         heroStat(String(localized: "Calories"),
@@ -356,7 +356,7 @@ struct CoupledView: View {
     /// 0–21 axis (Charge world). A calibrating / unscored day shows a dash and an empty tube.
     private var optimalStat: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("OPTIMAL")
+            Text("Optimal")
                 .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.textSecondary)
             Text(Self.optimalStrainRangeText(recovery: recovery))
@@ -379,7 +379,7 @@ struct CoupledView: View {
     /// number. Reproduced here so the coupled stat stack reads identically to the Workouts hero stats.
     private func heroStat(_ title: String, _ value: String, tint: Color) -> some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(title.uppercased())
+            Text(title)
                 .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.textSecondary)
             Text(value).font(StrandFont.number(20))

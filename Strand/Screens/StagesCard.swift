@@ -426,7 +426,7 @@ struct StageDetailView: View {
                 .fill(color)
                 .frame(width: 12, height: 12)
                 .accessibilityHidden(true)
-            Text(stage.label.uppercased())
+            Text(stage.label)
                 .font(StrandFont.overline)
                 .tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.textPrimary)
@@ -525,7 +525,7 @@ struct StageDetailView: View {
                 Text(durationText(s.asleep))
                     .font(StrandFont.number(26))
                     .foregroundStyle(StrandPalette.textPrimary)
-                Text("HOURS OF SLEEP")
+                Text("Hours of sleep")
                     .font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textTertiary)
@@ -539,7 +539,7 @@ struct StageDetailView: View {
                 Text(durationText(restorative))
                     .font(StrandFont.number(26))
                     .foregroundStyle(StrandPalette.sleepREM)
-                Text("RESTORATIVE SLEEP")
+                Text("Restorative sleep")
                     .font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textTertiary)
@@ -643,7 +643,7 @@ struct StageDetailView: View {
         let dimmed = selectedStage != nil && !isSelected
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
-                Text(stage.label.uppercased())
+                Text(stage.label)
                     .font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textPrimary)

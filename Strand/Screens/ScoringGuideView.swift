@@ -131,7 +131,7 @@ struct ScoringGuideView: View {
     private var header: some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("YOUR DAILY SCORES").font(StrandFont.overline)
+                Text("Your daily scores").font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textTertiary)
                 Text("How your scores work").font(StrandFont.rounded(26, weight: .bold))
@@ -169,7 +169,7 @@ struct ScoringGuideView: View {
     private var introCard: some View {
         NoopCard {
             VStack(alignment: .leading, spacing: 14) {
-                Text("THE THREE SCORES").font(StrandFont.overline)
+                Text("The three scores").font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
                 Text("Pulse gives you three daily scores (Charge, Effort and Rest), each on a 0-100 scale. They're built from your strap's raw signals using published, peer-reviewed sport science, and computed entirely on your device. They are NOT WHOOP's scores: we don't have WHOOP's private algorithms and don't pretend to. They aim at the same three questions using open science, so they'll usually track WHOOP's in direction, but won't match number-for-number. And that's the point.")
@@ -219,7 +219,6 @@ struct ScoringGuideView: View {
                             Text(section.displayName)
                                 .font(StrandFont.overline)
                                 .tracking(StrandFont.overlineTracking)
-                                .textCase(.uppercase)
                                 .foregroundStyle(section.accent)
                         }
                         Text(headline).font(StrandFont.headline)
@@ -236,7 +235,6 @@ struct ScoringGuideView: View {
                 HStack(alignment: .top, spacing: 8) {
                     Text("vs WHOOP").font(StrandFont.overline)
                         .tracking(StrandFont.overlineTracking)
-                        .textCase(.uppercase)
                         .foregroundStyle(section.accent)
                         .padding(.top, 1)
                     Text(vsWhoop)
@@ -275,7 +273,6 @@ struct ScoringGuideView: View {
             Text(section.displayName)
                 .font(StrandFont.overline)
                 .tracking(StrandFont.overlineTracking)
-                .textCase(.uppercase)
                 .foregroundStyle(StrandPalette.textTertiary)
         }
     }

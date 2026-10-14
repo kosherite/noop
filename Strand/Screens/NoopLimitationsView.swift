@@ -123,7 +123,7 @@ struct NoopLimitationsView: View {
     private var legendCard: some View {
         NoopCard {
             VStack(alignment: .leading, spacing: 10) {
-                Text("LEGEND").font(StrandFont.overline)
+                Text("Legend").font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textTertiary)
                 legendRow(.full, "Read live off the strap")

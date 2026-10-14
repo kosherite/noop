@@ -137,6 +137,8 @@ struct SettingsView: View {
     @AppStorage(SleepChartStyle.storageKey) private var sleepChartStyleRaw = SleepChartStyle.classic.rawValue
     // Chrome accent colour (mint / WHOOP blue / custom). Chrome only — never the data colour worlds.
     @AppStorage(AccentColor.storageKey) private var accentRaw = AccentColor.mint.rawValue
+    @AppStorage(PulsePalette.storageKey) private var pulsePaletteRaw = PulsePalette.defaultValue.rawValue
+    @AppStorage(PulseFinish.storageKey) private var pulseFinishRaw = PulseFinish.defaultValue.rawValue
     @AppStorage(AccentColor.customHexKey) private var accentCustomHex = AccentColor.defaultCustomHex
     // Day-cycle scene backdrop behind Today (#698). Default ON. Off swaps the scene for a plain dark
     // canvas. TodayView reads the same key to gate its SceneScreenBackground.
@@ -1170,6 +1172,30 @@ struct SettingsView: View {
                 }
                 #endif
                 rowDivider
+                // Pulse: the colour palette and the card finish. Every surface and metric colour follows these.
+                FormRow(label: "Colours") {
+                    Picker("Colours", selection: $pulsePaletteRaw) {
+                        ForEach(PulsePalette.allCases) { p in
+                            Text(p.label).tag(p.rawValue)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.menu)
+                    .tint(StrandPalette.accent)
+                    .accessibilityLabel("Colours")
+                }
+                rowDivider
+                FormRow(label: "Finish") {
+                    Picker("Finish", selection: $pulseFinishRaw) {
+                        ForEach(PulseFinish.allCases) { f in
+                            Text(f.label).tag(f.rawValue)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.segmented)
+                    .accessibilityLabel("Finish")
+                }
+                rowDivider
                 // Theme presets — one-tap bundles coordinating accent + chart world + backdrop + card
                 // opacity. Derived (no stored value): tweaking any control below flips this to Custom.
                 FormRow(label: "Preset") {
@@ -1437,7 +1463,7 @@ struct SettingsView: View {
                 // MARK: Strap log — a Settings shortcut so people don't have to hunt for it on the Live
                 // screen (#507: couldn't find it on Mac; #509: same on iPhone). Same text as the Live card.
                 HStack(spacing: 12) {
-                    Text("STRAP LOG").font(StrandFont.overline).tracking(StrandFont.overlineTracking)
+                    Text("Strap log").font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                         .foregroundStyle(StrandPalette.textSecondary)
                     Spacer()
                     Button("Copy") { PlatformPasteboard.copy(live.exportableLogText()) }
@@ -3054,7 +3080,7 @@ struct StepsCalibrationSheet: View {
     private var header: some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("STEPS ESTIMATE").font(StrandFont.overline)
+                Text("Steps estimate").font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textTertiary)
                 Text("Calibrate your steps").font(StrandFont.rounded(26, weight: .bold))

@@ -460,7 +460,7 @@ private struct NoopMotionDemo: View {
 
                 // CountUpText — the big score ticks to a new value.
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("COUNT-UP SCORE").strandOverline()
+                    Text("Count-up score").strandOverline()
                     CountUpText(value: score,
                                 format: { "\(Int($0.rounded()))" },
                                 font: StrandFont.display(72),
@@ -478,7 +478,7 @@ private struct NoopMotionDemo: View {
 
                 // staggeredAppear — a list ripples in. `id` reset replays it.
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("STAGGERED APPEAR").strandOverline()
+                    Text("Staggered appear").strandOverline()
                     VStack(spacing: 10) {
                         ForEach(Array(labels.enumerated()), id: \.offset) { i, label in
                             HStack {
@@ -501,7 +501,7 @@ private struct NoopMotionDemo: View {
 
                 // softCardTransition — insert/remove.
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("SOFT CARD TRANSITION").strandOverline()
+                    Text("Soft card transition").strandOverline()
                     VStack(spacing: 10) {
                         ForEach(cards, id: \.self) { c in
                             Text("Card \(c)")

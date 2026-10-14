@@ -69,7 +69,7 @@ struct AppleWatchSetupView: View {
     private var header: some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("APPLE WATCH").font(StrandFont.overline)
+                Text("Apple Watch").font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textTertiary)
                 Text("Use Pulse with your watch").font(StrandFont.rounded(26, weight: .bold))

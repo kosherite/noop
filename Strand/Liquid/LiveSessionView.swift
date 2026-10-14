@@ -110,7 +110,7 @@ struct LiveSessionView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text("SILENT GUARDIAN")
+            Text("Silent guardian")
                 .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.metricCyan)
             HStack(spacing: NoopMetrics.space2) {
@@ -123,7 +123,7 @@ struct LiveSessionView: View {
     }
 
     private var betaPill: some View {
-        Text("BETA")
+        Text("Beta")
             .font(StrandFont.overlineScaled(8.5)).tracking(1.2)
             .foregroundStyle(StrandPalette.textSecondary)
             .padding(.horizontal, 8).padding(.vertical, 2.5)
@@ -305,7 +305,7 @@ struct LiveSessionSummarySheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: NoopMetrics.sectionSpacing) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("LIVE SESSION")
+                Text("Live session")
                     .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.metricCyan)
                 Text("Session summary")

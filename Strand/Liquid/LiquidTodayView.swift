@@ -674,7 +674,7 @@ struct LiquidTodayView: View {
                 Text("Start session")
                     .font(StrandFont.subhead)
                     .foregroundStyle(StrandPalette.textPrimary)
-                Text("BETA")
+                Text("Beta")
                     .font(StrandFont.overlineScaled(8.5)).tracking(1.2)
                     .foregroundStyle(StrandPalette.textSecondary)
                     .padding(.horizontal, 8).padding(.vertical, 2.5)
@@ -740,7 +740,7 @@ struct LiquidTodayView: View {
 
     private var heartRateSection: some View {
         VStack(spacing: 8) {
-            sectionHead("HEART RATE", trailing: "Live")
+            sectionHead("Heart rate", trailing: "Live")
             // #979: the whole-day HR trend (Deep Timeline) still exists but was buried behind Metrics →
             // Show all → Deep Timeline. The whole live HR card remains a one-tap route into it.
             NavigationLink(value: TabRoute.fullDayChart) {
@@ -768,14 +768,14 @@ struct LiquidTodayView: View {
     private var yourCardsSection: some View {
         VStack(spacing: 8) {
             HStack {
-                Text("YOUR CARDS").font(StrandFont.overline).tracking(1.6)
+                Text("Your cards").font(StrandFont.overline).tracking(1.6)
                     .foregroundStyle(StrandPalette.textTertiary)
                 Spacer()
                 Button { customizationDestination = .yourCards } label: {
                     // #492 item 4 parity: unify the Your Cards / Key Metrics edit affordance to "EDIT" across
                     // platforms (Android #563). Reuse the localized "Edit" key, uppercased at display, so this
                     // stays translated (BEARBEITEN / MODIFIER / …) without a new literal.
-                    Text(String(localized: "Edit").uppercased()).font(StrandFont.overlineScaled(11)).tracking(1.0)
+                    Text(String(localized: "Edit")).font(StrandFont.overlineScaled(11)).tracking(1.0)
                         .foregroundStyle(StrandPalette.accent)
                 }
                 .buttonStyle(.plain)
@@ -1134,7 +1134,7 @@ struct LiquidTodayView: View {
                 LiquidVessel(value: frac, tint: tint, animated: false, tapPassesThrough: true)
                     .frame(width: 30, height: 30)
                 VStack(alignment: .leading, spacing: 1) {
-                    Text(title.uppercased()).font(StrandFont.overlineScaled(11)).tracking(1.0)
+                    Text(title).font(StrandFont.overlineScaled(11)).tracking(1.0)
                         .foregroundStyle(StrandPalette.textPrimary)
                     Text(sub).font(StrandFont.caption).foregroundStyle(StrandPalette.textTertiary)
                 }
@@ -1193,7 +1193,7 @@ struct LiquidTodayView: View {
                 card {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
-                            Text("SYNTHESIS").font(StrandFont.overline).tracking(1.6)
+                            Text("Synthesis").font(StrandFont.overline).tracking(1.6)
                                 .foregroundStyle(StrandPalette.textSecondary)
                             Spacer()
                             Text(synthesisExpanded
@@ -1256,7 +1256,7 @@ struct LiquidTodayView: View {
         return card {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
-                    Text("RECOVERY VITALS").font(StrandFont.overline).tracking(1.6)
+                    Text("Recovery vitals").font(StrandFont.overline).tracking(1.6)
                         .foregroundStyle(StrandPalette.textSecondary)
                     Spacer()
                     if let line = vitalsProvenanceLine {
@@ -1348,10 +1348,10 @@ struct LiquidTodayView: View {
                 // The label names the window the DETAILED tiles graph, so it is only honest while they
                 // are drawn: with the trend graphs off (the default) nothing in this section renders a
                 // trend, and the header was still announcing one (#2376).
-                sectionHead("KEY METRICS", trailing: keyMetricsDetailed ? trendWindowLabel : nil)
+                sectionHead("Key metrics", trailing: keyMetricsDetailed ? trendWindowLabel : nil)
                 // #430 parity: the SAME editor the classic grid uses — selection + order + Detailed tiles.
                 Button { customizationDestination = .keyMetrics } label: {
-                    Text(String(localized: "Edit").uppercased())
+                    Text(String(localized: "Edit"))
                         .font(StrandFont.overlineScaled(11))
                         .tracking(1.0)
                         .foregroundStyle(StrandPalette.accent)
@@ -1476,7 +1476,7 @@ struct LiquidTodayView: View {
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(tint.opacity(0.72))
                     .frame(width: 14)
-                Text(label.uppercased())
+                Text(label)
                     .font(StrandFont.overlineScaled(10))
                     .tracking(1.0)
                     .foregroundStyle(StrandPalette.textTertiary)
@@ -1540,7 +1540,7 @@ struct LiquidTodayView: View {
 
     private var lastWorkoutsSection: some View {
         VStack(spacing: 8) {
-            sectionHead("LAST WORKOUTS", trailing: "\(workouts.count) total")
+            sectionHead("Last workouts", trailing: "\(workouts.count) total")
             if let w = workouts.first {
                 NavigationLink(value: TabRoute.workouts) { workoutCard(w) }
                     .buttonStyle(LiquidPressStyle())
@@ -1578,7 +1578,7 @@ struct LiquidTodayView: View {
 
     private var dataSourcesSection: some View {
         VStack(spacing: 8) {
-            sectionHead("DATA SOURCES", trailing: "Provenance")
+            sectionHead("Data sources", trailing: "Provenance")
             NavigationLink(value: TabRoute.dataSources) {
                 card {
                     VStack(spacing: 12) {
@@ -2290,7 +2290,7 @@ private struct HeroScoreCell: View {
                 HStack(spacing: 3) {
                     // #74: one line, shrink-to-fit rather than wrap under large Dynamic Type (mirrors the
                     // score number above) so CHARGE/EFFORT/REST never grow the hero card to two lines.
-                    Text(label.uppercased()).font(StrandFont.overline).tracking(1.6)
+                    Text(label).font(StrandFont.overline).tracking(1.6)
                         .lineLimit(1).minimumScaleFactor(0.7)
                     Image(systemName: "chevron.right").font(.system(size: 9, weight: .semibold)).opacity(0.6)
                 }
@@ -2506,7 +2506,7 @@ private struct LiquidLiveHR: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .center, spacing: NoopMetrics.space2) {
                 HStack(spacing: NoopMetrics.space1) {
-                    Text("BEATS PER MINUTE")
+                    Text("Beats per minute")
                         .font(StrandFont.overline)
                         .tracking(1.6)
                         .foregroundStyle(StrandPalette.textSecondary)

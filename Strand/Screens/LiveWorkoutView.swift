@@ -138,7 +138,6 @@ struct LiveWorkoutView: View {
                     if model.activeWorkout?.isPaused == true { Text("Paused") }
                     else { Text("Recording workout") }
                 }
-                .textCase(.uppercase)
                 .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.metricRose)
             }
@@ -158,7 +157,7 @@ struct LiveWorkoutView: View {
         Group {
             if let workout = model.activeWorkout {
                 VStack(spacing: NoopMetrics.space1) {
-                    Text("TIME")
+                    Text("Time")
                         .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                         .foregroundStyle(StrandPalette.textSecondary)
                     TimelineView(.periodic(from: .now, by: 1)) { _ in
@@ -177,7 +176,7 @@ struct LiveWorkoutView: View {
     private var heartRateBlock: some View {
         let tint = zone >= 1 ? StrandPalette.hrZoneColor(zone) : StrandPalette.effortColor
         return VStack(spacing: NoopMetrics.space1) {
-            Text("HEART RATE")
+            Text("Heart rate")
                 .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.textSecondary)
             if let bpm = model.bpm {
@@ -225,7 +224,7 @@ struct LiveWorkoutView: View {
             .accessibilityLabel(effortAccessibilityLabel)
             .accessibilityValue(Text(StrainGauge.stateLabel(forFraction: fraction)))
 
-            Text("EFFORT BUILDING")
+            Text("Effort building")
                 .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.effortColor)
             Text(StrainGauge.stateLabel(forFraction: fraction))
@@ -241,7 +240,7 @@ struct LiveWorkoutView: View {
         let tint = zone >= 1 ? StrandPalette.hrZoneColor(zone) : StrandPalette.effortColor
         return VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("HR ZONE")
+                Text("HR zone")
                     .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
                 Spacer()
@@ -510,7 +509,7 @@ private struct SensorRowIfPresent: View {
             let power = LiveState.formatPowerWatts(live.sensorPowerWatts)
             NoopCard(padding: NoopMetrics.cardInnerPadding, tint: StrandPalette.effortColor) {
                 VStack(alignment: .leading, spacing: NoopMetrics.space3) {
-                    Text("SENSOR")
+                    Text("Sensor")
                         .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                         .foregroundStyle(StrandPalette.textSecondary)
                     HStack(spacing: NoopMetrics.gap) {

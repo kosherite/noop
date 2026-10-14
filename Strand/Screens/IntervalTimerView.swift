@@ -241,7 +241,7 @@ struct IntervalTimerView: View {
     /// Frosted round chip — "ROUND n / N".
     private var roundChip: some View {
         HStack(spacing: 6) {
-            Text("ROUND").strandOverline()
+            Text("Round").strandOverline()
             Text("\(min(currentRound, rounds))")
                 .font(StrandFont.number(18))
                 .foregroundStyle(StrandPalette.textPrimary)
@@ -317,7 +317,7 @@ struct IntervalTimerView: View {
             //
             // Not yet reported here; found by sweeping for the shape after the Intelligence card was
             // seen rendering "CHARGEEFFORT" on a device. Larger Dynamic Type is where either bites.
-            Text(label.uppercased())
+            Text(label)
                 .font(StrandFont.footnote)
                 .foregroundStyle(StrandPalette.textTertiary)
                 .lineLimit(1)

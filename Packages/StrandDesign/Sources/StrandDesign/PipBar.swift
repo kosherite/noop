@@ -208,7 +208,6 @@ public struct PipBarRow: View {
             Text(label)
                 .font(StrandFont.overline)
                 .tracking(StrandFont.overlineTracking)
-                .textCase(.uppercase)
                 .foregroundStyle(StrandPalette.textSecondary)
 
             // Big white value + smaller-weight unit suffix.

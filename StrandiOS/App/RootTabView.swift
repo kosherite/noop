@@ -709,7 +709,7 @@ private struct QuickActionSheet: View {
                 .padding(.top, 10)
                 .padding(.bottom, 14)
 
-            Text("QUICK ACTIONS")
+            Text("Quick actions")
                 .font(StrandFont.overline)
                 .tracking(1.6)
                 .foregroundStyle(StrandPalette.textTertiary)

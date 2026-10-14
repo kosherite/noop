@@ -167,7 +167,7 @@ struct WatchWorkoutView: View {
     /// first in-session sample lands.
     private var heroHeartRate: some View {
         VStack(spacing: 1) {
-            Text("HEART RATE")
+            Text("Heart rate")
                 .font(StrandFont.overline)
                 .tracking(StrandFont.overlineTracking)
                 .foregroundStyle(StrandPalette.textSecondary)

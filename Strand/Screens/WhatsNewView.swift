@@ -80,7 +80,7 @@ struct WhatsNewView: View {
     private var expectationsCard: some View {
         NoopCard(tint: StrandPalette.accent) {
             VStack(alignment: .leading, spacing: 14) {
-                Text("WHAT TO EXPECT").font(StrandFont.overline)
+                Text("What to expect").font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
                 ForEach(AppChangelog.expectations) { e in

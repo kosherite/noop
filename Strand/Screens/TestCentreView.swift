@@ -207,7 +207,7 @@ struct TestCentreView: View {
     @ViewBuilder private var domainModesCard: some View {
         NoopCard {
             VStack(alignment: .leading, spacing: NoopMetrics.space3) {
-                Text("TEST MODES")
+                Text("Test modes")
                     .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
                 Text("Each test logs extra detail for one part of the app while you wear the strap, then bundles it for a bug report.")
@@ -321,13 +321,13 @@ struct TestCentreView: View {
     @ViewBuilder private var diagnosticToolsCard: some View {
         NoopCard {
             VStack(alignment: .leading, spacing: NoopMetrics.space3) {
-                Text("DIAGNOSTIC TOOLS")
+                Text("Diagnostic tools")
                     .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
 
                 // Strap log, the same exportableLogText the Settings + Live strap-log cards share.
                 HStack(spacing: 12) {
-                    Text("STRAP LOG").font(StrandFont.overline).tracking(StrandFont.overlineTracking)
+                    Text("Strap log").font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                         .foregroundStyle(StrandPalette.textSecondary)
                     Spacer()
                     Button("Copy") { PlatformPasteboard.copy(live.exportableLogText()) }
@@ -406,7 +406,7 @@ struct TestCentreView: View {
     @ViewBuilder private var ouraCard: some View {
         NoopCard {
             VStack(alignment: .leading, spacing: NoopMetrics.space3) {
-                Text("OURA")
+                Text("Oura")
                     .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
 
@@ -617,7 +617,7 @@ struct TestCentreView: View {
     @ViewBuilder private var exportCard: some View {
         NoopCard {
             VStack(alignment: .leading, spacing: NoopMetrics.space3) {
-                Text("EXPORT")
+                Text("Export")
                     .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
 
@@ -709,7 +709,7 @@ struct TestCentreView: View {
     @ViewBuilder private var experimentalAlgorithmsCard: some View {
         NoopCard {
             VStack(alignment: .leading, spacing: NoopMetrics.space3) {
-                Text("EXPERIMENTAL ALGORITHMS")
+                Text("Experimental algorithms")
                     .font(StrandFont.overline).tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textSecondary)
                 Text("Research-grade alternatives / precision tweaks. Opt-in, off by default, non-clinical.")

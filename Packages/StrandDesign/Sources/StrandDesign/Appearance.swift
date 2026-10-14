@@ -101,7 +101,7 @@ public enum AccentColor: String, CaseIterable, Identifiable, Sendable {
 
     public var label: String {
         switch self {
-        case .mint:      return String(localized: "Pulse Green", bundle: .module)
+        case .mint:      return String(localized: "Theme colour", bundle: .module)
         case .whoopBlue: return String(localized: "WHOOP Blue", bundle: .module)
         case .custom:    return String(localized: "Custom", bundle: .module)
         }

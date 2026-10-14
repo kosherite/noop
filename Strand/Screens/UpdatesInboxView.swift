@@ -45,7 +45,7 @@ struct UpdatesInboxView: View {
     private var header: some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("INBOX").font(StrandFont.overline)
+                Text("Inbox").font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textTertiary)
                 Text("Updates")

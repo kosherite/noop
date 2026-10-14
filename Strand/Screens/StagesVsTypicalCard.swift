@@ -60,7 +60,7 @@ struct StagesVsTypicalCard: View {
                     .fill(color)
                     .frame(width: 12, height: 12)
                     .accessibilityHidden(true)
-                Text(label.uppercased())
+                Text(label)
                     .font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textPrimary)

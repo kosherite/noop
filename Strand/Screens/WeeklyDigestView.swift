@@ -562,7 +562,6 @@ private struct DigestScoreCard: View {
                 Text(summary.metric.label)
                     .font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
-                    .textCase(.uppercase)
                     .foregroundStyle(domain.color)
                     .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                     .multilineTextAlignment(.center)
@@ -620,7 +619,6 @@ private struct DigestScoreCard: View {
         Text(summary.metric.label)
             .font(StrandFont.overline)
             .tracking(StrandFont.overlineTracking)
-            .textCase(.uppercase)
             .foregroundStyle(domain.color)
     }
 

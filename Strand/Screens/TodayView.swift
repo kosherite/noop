@@ -108,7 +108,7 @@ private struct ActiveWorkoutIndicatorCard: View {
                         .fill(StrandPalette.metricRose)
                         .frame(width: NoopMetrics.space2, height: NoopMetrics.space2)
                         .accessibilityHidden(true)
-                    Text("WORKOUT IN PROGRESS")
+                    Text("Workout in progress")
                         .font(StrandFont.overline)
                         .tracking(StrandFont.overlineTracking)
                         .foregroundStyle(StrandPalette.metricRose)
@@ -1992,7 +1992,7 @@ struct TodayView: View {
                             .foregroundStyle(StrandPalette.textSecondary)
                     }
                     Spacer(minLength: NoopMetrics.space2)
-                    Text("BETA")
+                    Text("Beta")
                         .strandOverline()
                     Image(systemName: "chevron.right")
                         .font(StrandFont.caption.weight(.semibold))
@@ -2830,7 +2830,7 @@ struct TodayView: View {
                 .frame(width: 34, height: 34)
                 .overlay(Image(systemName: icon).font(.system(size: 15, weight: .semibold)).foregroundStyle(tint))
             VStack(alignment: .leading, spacing: 2) {
-                Text(title.uppercased())
+                Text(title)
                     .font(StrandFont.overline)
                     .tracking(StrandFont.overlineTracking)
                     .foregroundStyle(StrandPalette.textPrimary)
@@ -3046,7 +3046,6 @@ struct TodayView: View {
             // translated word in the current locale rather than baking an English "HRV"/"RESTING HR" in.
             Text(label)
                 .font(StrandFont.footnote.weight(.semibold))
-                .textCase(.uppercase)
                 .tracking(0.6)
                 .foregroundStyle(StrandPalette.textSecondary)
             Spacer(minLength: 8)
@@ -3337,7 +3336,6 @@ struct TodayView: View {
                     // domain word (Charge/Effort/Rest) and `.textCase(.uppercase)` does the uppercasing in
                     // the current locale, so a de/es/ru build shows the translated word, not the English id.
                     Text(Self.domainLabel(domain))
-                        .textCase(.uppercase)
                         .font(StrandFont.overline)
                         .tracking(StrandFont.overlineTracking)
                     Image(systemName: "chevron.right")

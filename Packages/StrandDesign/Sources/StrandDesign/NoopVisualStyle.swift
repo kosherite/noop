@@ -8,23 +8,23 @@ import SwiftUI
 
 public enum NoopVisualStyle {
     // Neutral, low-chroma surfaces sampled from the supplied dark-mode reference.
-    public static let canvas = Color(light: "#FFFFFF", dark: "#111110")
-    public static let surface = Color(light: "#F6F5F2", dark: "#1B1A18")
-    public static let surfaceTop = Color(light: "#F6F5F2", dark: "#1B1A18")
-    public static let surfaceBottom = Color(light: "#F6F5F2", dark: "#1B1A18")
-    public static let inset = Color(light: "#EBE9E4", dark: "#2A2926")
+    public static var canvas: Color { PulseTheme.canvas }
+    public static var surface: Color { PulseTheme.surface }
+    public static var surfaceTop: Color { PulseTheme.surface }
+    public static var surfaceBottom: Color { PulseTheme.surface }
+    public static var inset: Color { PulseTheme.inset }
 
-    public static let border = Color(light: "#E6E3DD", dark: "#2C2B28")
-    public static let borderHighlight = Color(light: "#D3CFC6", dark: "#4A4844")
-    public static let divider = Color(light: "#E6E3DD", dark: "#2C2B28")
+    public static var border: Color { PulseTheme.line }
+    public static var borderHighlight: Color { PulseTheme.line }
+    public static var divider: Color { PulseTheme.line }
 
-    public static let primaryText = Color(light: "#1D1D1F", dark: "#F3F2EF")
-    public static let secondaryText = Color(light: "#8B877F", dark: "#9B978F")
-    public static let tertiaryText = Color(light: "#A9A59D", dark: "#6E6A63")
+    public static var primaryText: Color { PulseTheme.ink }
+    public static var secondaryText: Color { PulseTheme.sub }
+    public static var tertiaryText: Color { PulseTheme.ter }
 
-    public static let mint = Color(light: "#22C55E", dark: "#22C55E")
-    public static let mintDeep = Color(light: "#15803D", dark: "#4ADE80")
-    public static let mintGlow = Color(light: "#4ADE80", dark: "#4ADE80")
+    public static var mint: Color { PulseTheme.charge }
+    public static var mintDeep: Color { PulseTheme.deep(PulseTheme.spec.charge) }
+    public static var mintGlow: Color { PulseTheme.bright(PulseTheme.spec.charge) }
 
     public static let cardRadius: CGFloat = 24
     public static let compactRadius: CGFloat = 16
@@ -65,7 +65,12 @@ public struct NoopPanelSurface: View {
         // multiply their compositing work, so iOS uses one theme-aware fill and a thin tinted rim.
         // This changes decorative depth only; card geometry and the design-system colors stay the same.
         shape
-            .fill(NoopVisualStyle.surface)
+            .fill(NoopVisualStyle.surface.opacity(PulseTheme.surfaceOpacity))
+            .overlay {
+                if let stroke = PulseTheme.cardStroke { shape.strokeBorder(stroke, lineWidth: 1) }
+            }
+            .shadow(color: PulseTheme.hasShadow ? Color.black.opacity(0.07) : .clear,
+                    radius: PulseTheme.hasShadow ? 12 : 0, x: 0, y: PulseTheme.hasShadow ? 4 : 0)
             .opacity(surfaceOpacity)
         #else
         shape
