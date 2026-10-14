@@ -675,7 +675,7 @@ struct LiquidTodayView: View {
                     .font(StrandFont.subhead)
                     .foregroundStyle(StrandPalette.textPrimary)
                 Text("Beta")
-                    .font(StrandFont.overlineScaled(8.5)).tracking(1.2)
+                    .font(StrandFont.overlineScaled(8.5)).tracking(0)
                     .foregroundStyle(StrandPalette.textSecondary)
                     .padding(.horizontal, 8).padding(.vertical, 2.5)
                     .background(Capsule().fill(StrandPalette.surfaceInset.opacity(0.72))
@@ -768,14 +768,14 @@ struct LiquidTodayView: View {
     private var yourCardsSection: some View {
         VStack(spacing: 8) {
             HStack {
-                Text("Your cards").font(StrandFont.overline).tracking(1.6)
+                Text("Your cards").font(StrandFont.overline).tracking(0)
                     .foregroundStyle(StrandPalette.textTertiary)
                 Spacer()
                 Button { customizationDestination = .yourCards } label: {
                     // #492 item 4 parity: unify the Your Cards / Key Metrics edit affordance to "EDIT" across
                     // platforms (Android #563). Reuse the localized "Edit" key, uppercased at display, so this
                     // stays translated (BEARBEITEN / MODIFIER / …) without a new literal.
-                    Text(String(localized: "Edit")).font(StrandFont.overlineScaled(11)).tracking(1.0)
+                    Text(String(localized: "Edit")).font(StrandFont.overlineScaled(11)).tracking(0)
                         .foregroundStyle(StrandPalette.accent)
                 }
                 .buttonStyle(.plain)
@@ -1134,7 +1134,7 @@ struct LiquidTodayView: View {
                 LiquidVessel(value: frac, tint: tint, animated: false, tapPassesThrough: true)
                     .frame(width: 30, height: 30)
                 VStack(alignment: .leading, spacing: 1) {
-                    Text(title).font(StrandFont.overlineScaled(11)).tracking(1.0)
+                    Text(title).font(StrandFont.overlineScaled(11)).tracking(0)
                         .foregroundStyle(StrandPalette.textPrimary)
                     Text(sub).font(StrandFont.caption).foregroundStyle(StrandPalette.textTertiary)
                 }
@@ -1193,7 +1193,7 @@ struct LiquidTodayView: View {
                 card {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
-                            Text("Synthesis").font(StrandFont.overline).tracking(1.6)
+                            Text("Synthesis").font(StrandFont.overline).tracking(0)
                                 .foregroundStyle(StrandPalette.textSecondary)
                             Spacer()
                             Text(synthesisExpanded
@@ -1256,7 +1256,7 @@ struct LiquidTodayView: View {
         return card {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
-                    Text("Recovery vitals").font(StrandFont.overline).tracking(1.6)
+                    Text("Recovery vitals").font(StrandFont.overline).tracking(0)
                         .foregroundStyle(StrandPalette.textSecondary)
                     Spacer()
                     if let line = vitalsProvenanceLine {
@@ -1353,7 +1353,7 @@ struct LiquidTodayView: View {
                 Button { customizationDestination = .keyMetrics } label: {
                     Text(String(localized: "Edit"))
                         .font(StrandFont.overlineScaled(11))
-                        .tracking(1.0)
+                        .tracking(0)
                         .foregroundStyle(StrandPalette.accent)
                 }
                 .buttonStyle(.plain)
@@ -1478,7 +1478,7 @@ struct LiquidTodayView: View {
                     .frame(width: 14)
                 Text(label)
                     .font(StrandFont.overlineScaled(10))
-                    .tracking(1.0)
+                    .tracking(0)
                     .foregroundStyle(StrandPalette.textTertiary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.82)
@@ -1607,7 +1607,7 @@ struct LiquidTodayView: View {
     /// Matches the Android twin, whose `SectionHeader` already takes `trailing: String? = null`.
     private func sectionHead(_ title: String, trailing: String? = nil) -> some View {
         HStack(alignment: .firstTextBaseline) {
-            Text(LocalizedStringKey(title)).font(StrandFont.overline).tracking(1.6).foregroundStyle(StrandPalette.textTertiary)
+            Text(LocalizedStringKey(title)).font(StrandFont.overline).tracking(0).foregroundStyle(StrandPalette.textTertiary)
             Spacer()
             if let trailing {
                 Text(LocalizedStringKey(trailing)).font(StrandFont.caption).foregroundStyle(StrandPalette.textTertiary)
@@ -2176,7 +2176,7 @@ private struct LiquidWordmark: View {
     @State private var token = 0      // drives the tap haptic
 
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 1) {
             ForEach(Array("Pulse".enumerated()), id: \.offset) { _, ch in
                 Text(String(ch))
                     .font(StrandFont.rounded(16, weight: .bold))
@@ -2290,7 +2290,7 @@ private struct HeroScoreCell: View {
                 HStack(spacing: 3) {
                     // #74: one line, shrink-to-fit rather than wrap under large Dynamic Type (mirrors the
                     // score number above) so CHARGE/EFFORT/REST never grow the hero card to two lines.
-                    Text(label).font(StrandFont.overline).tracking(1.6)
+                    Text(label).font(StrandFont.overline).tracking(0)
                         .lineLimit(1).minimumScaleFactor(0.7)
                     Image(systemName: "chevron.right").font(.system(size: 9, weight: .semibold)).opacity(0.6)
                 }
@@ -2508,7 +2508,7 @@ private struct LiquidLiveHR: View {
                 HStack(spacing: NoopMetrics.space1) {
                     Text("Beats per minute")
                         .font(StrandFont.overline)
-                        .tracking(1.6)
+                        .tracking(0)
                         .foregroundStyle(StrandPalette.textSecondary)
                         .lineLimit(1)
                         .minimumScaleFactor(0.65)
