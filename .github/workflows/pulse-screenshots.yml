@@ -12,7 +12,7 @@ on:
         default: "liquidtoday today sleep trends health settings"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   shots:
@@ -84,7 +84,10 @@ jobs:
           xcrun simctl io "$U" screenshot "shots/app-shell-light.png"
           ls -la shots
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pulse-screenshots
-          path: shots/
+      - name: Publish to the pulse-screenshots branch
+        run: |
+          cd shots
+          git init -q -b pulse-screenshots
+          git -c user.name=ci -c user.email=ci@local add -A
+          git -c user.name=ci -c user.email=ci@local commit -q -m "Screenshots ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" pulse-screenshots
